@@ -9,20 +9,24 @@ import space.arim.dazzleconf.backend.Backend;
 import space.arim.dazzleconf.backend.PathRoot;
 import space.arim.dazzleconf.backend.yaml.YamlBackend;
 
+import java.io.IOException;
+import java.nio.file.Files;
+
 public final class ConfigModule {
 
-  private static final Logger log = LoggerFactory.getLogger(ConfigModule.class);
+    private static final Logger log = LoggerFactory.getLogger(ConfigModule.class);
 
-  Configuration<Config> configuration() {
-    return Configuration.defaultBuilder(Config.class).build();
-  }
+    public Configuration<Config> configuration() {
+        return Configuration.defaultBuilder(Config.class).build();
+    }
 
-  Backend backend(VanishPlugin vanishPlugin) {
-    return new YamlBackend(new PathRoot(vanishPlugin.getDataPath().resolve("config.yml")));
-  }
+    public Backend backend(VanishPlugin vanishPlugin) throws IOException {
+        Files.createDirectories(vanishPlugin.getDataPath());
+        return new YamlBackend(new PathRoot(vanishPlugin.getDataPath().resolve("config.yml")));
+    }
 
-  public Config config(Configuration<Config> configuration, Backend backend) {
-    return configuration.configureOrFallback(backend, new StandardErrorPrint(printable -> log.error(printable.printString())));
-  }
+    public Config config(Configuration<Config> configuration, Backend backend) {
+        return configuration.configureOrFallback(backend, new StandardErrorPrint(printable -> log.error(printable.printString())));
+    }
 
 }

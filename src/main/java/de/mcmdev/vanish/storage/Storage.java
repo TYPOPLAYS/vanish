@@ -4,10 +4,14 @@ import java.util.UUID;
 
 public interface Storage {
 
-  boolean isVanished(UUID uuid);
+    boolean isVanished(UUID uuid);
 
-  void setVanished(UUID uuid, boolean vanished);
+    void setVanished(UUID uuid, boolean vanished);
 
-  boolean supportsOfflinePlayers();
+    Integer getVanishLevelOverride(UUID uuid);
+
+    void setVanishLevelOverride(UUID uuid, Integer level);
+
+    boolean supportsOfflinePlayers();
 
 }

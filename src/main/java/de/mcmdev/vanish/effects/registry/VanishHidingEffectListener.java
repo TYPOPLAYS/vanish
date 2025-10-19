@@ -1,0 +1,68 @@
+package de.mcmdev.vanish.effects.registry;
+
+import de.mcmdev.vanish.VanishPlugin;
+import de.mcmdev.vanish.api.VanishApi;
+import de.mcmdev.vanish.effects.event.VanishApplyEffectEvent;
+import de.mcmdev.vanish.effects.event.VanishClearEffectEvent;
+import de.mcmdev.vanish.effects.event.VanishRecalculateEffectEvent;
+import jakarta.inject.Inject;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+
+final class VanishHidingEffectListener implements Listener {
+
+    private final VanishPlugin plugin;
+    private final VanishApi api;
+
+    @Inject
+    public VanishHidingEffectListener(final VanishPlugin plugin, final VanishApi api) {
+        this.plugin = plugin;
+        this.api = api;
+    }
+
+    @EventHandler
+    private void onVanish(final VanishApplyEffectEvent event) {
+        event.getPlayer().setVisibleByDefault(false);
+
+        recalculateForTarget(event.getPlayer());
+    }
+
+    @EventHandler
+    private void onUnvanish(final VanishClearEffectEvent event) {
+        event.getPlayer().setVisibleByDefault(true);
+    }
+
+    @EventHandler
+    private void onRecalculate(final VanishRecalculateEffectEvent event) {
+        recalculateForTarget(event.getPlayer());
+    }
+
+    @EventHandler
+    private void onJoin(final PlayerJoinEvent event) {
+        recalculateForViewer(event.getPlayer());
+    }
+
+    public void recalculateForTarget(final Player target) {
+        for (final Player viewer : Bukkit.getOnlinePlayers()) {
+            if (api.canSee(viewer, target)) {
+                viewer.showPlayer(plugin, target);
+            } else if (api.isVanished(target.getUniqueId())) {
+                viewer.hidePlayer(plugin, target);
+            }
+        }
+    }
+
+    public void recalculateForViewer(final Player viewer) {
+        for (final Player target : Bukkit.getOnlinePlayers()) {
+            if (api.canSee(viewer, target)) {
+                viewer.showPlayer(plugin, target);
+            } else if (api.isVanished(target.getUniqueId())) {
+                viewer.hidePlayer(plugin, target);
+            }
+        }
+    }
+
+}
