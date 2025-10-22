@@ -8,6 +8,7 @@ import de.mcmdev.vanish.config.Config;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import jakarta.inject.Inject;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;
 
 public class VanishCommand {
@@ -42,10 +43,10 @@ public class VanishCommand {
 
         if (vanishApi.isVanished(player.getUniqueId())) {
             vanishApi.unvanish(player.getUniqueId());
-            player.sendRichMessage("<aqua>You are no longer invisible.");
+            config.messages().toggleOff().send(player);
         } else {
             vanishApi.vanish(player.getUniqueId());
-            player.sendRichMessage("<aqua>You are now invisible.");
+            config.messages().toggleOn().send(player);
         }
 
         return 0;
@@ -63,12 +64,12 @@ public class VanishCommand {
 
         final boolean hasOverride = vanishApi.getLevelOverride(player.getUniqueId()) != null;
         if(!hasOverride) {
-            player.sendRichMessage("<red>You currently have no level override set.");
+            config.messages().levelOverrideNotSet().send(player);
             return 3;
         }
 
         vanishApi.setLevelOverride(player.getUniqueId(), null);
-        player.sendRichMessage("<aqua>Level override cleared.");
+        config.messages().levelOverrideCleared().send(player);
 
         return 0;
     }
@@ -86,7 +87,7 @@ public class VanishCommand {
         }
 
         vanishApi.setLevelOverride(player.getUniqueId(), level);
-        player.sendRichMessage("<aqua>Level override set.");
+        config.messages().levelOverrideSet().send(player, Placeholder.parsed("level", String.valueOf(level)));
 
         return 0;
     }

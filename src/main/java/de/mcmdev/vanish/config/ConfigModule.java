@@ -11,13 +11,16 @@ import space.arim.dazzleconf.backend.yaml.YamlBackend;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import space.arim.dazzleconf.reflect.TypeToken;
 
 public final class ConfigModule {
 
     private static final Logger log = LoggerFactory.getLogger(ConfigModule.class);
 
     public Configuration<Config> configuration() {
-        return Configuration.defaultBuilder(Config.class).build();
+        return Configuration.defaultBuilder(Config.class)
+            .addSimpleSerializer(new TypeToken<>(){}, new MessageTypeLiaison())
+            .build();
     }
 
     public Backend backend(VanishPlugin vanishPlugin) throws IOException {

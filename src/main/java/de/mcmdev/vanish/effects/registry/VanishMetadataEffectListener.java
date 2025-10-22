@@ -1,7 +1,7 @@
 package de.mcmdev.vanish.effects.registry;
 
 import de.mcmdev.vanish.VanishPlugin;
-import de.mcmdev.vanish.effects.event.VanishApplyEffectEvent;
+import de.mcmdev.vanish.effects.event.VanishApplyEffectsEvent;
 import jakarta.inject.Inject;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,14 +19,14 @@ final class VanishMetadataEffectListener implements Listener {
     }
 
     @EventHandler
-    private void onVanish(final VanishApplyEffectEvent event) {
+    private void onVanish(final VanishApplyEffectsEvent event) {
         final Player player = event.getPlayer();
 
         player.setMetadata("vanished", getValue());
     }
 
     @EventHandler
-    private void onUnvanish(final VanishApplyEffectEvent event) {
+    private void onUnvanish(final VanishApplyEffectsEvent event) {
         final Player player = event.getPlayer();
 
         player.removeMetadata("vanished", plugin);

@@ -14,11 +14,11 @@ import org.jetbrains.annotations.NotNull;
  * that corresponding actions such as visual changes or scheduled tasks for visibility updates
  * are executed.
  */
-public final class VanishApplyEffectEvent extends PlayerEvent {
+public final class VanishApplyEffectsEvent extends PlayerEvent {
 
     private static final HandlerList handlers = new HandlerList();
 
-    VanishApplyEffectEvent(@NotNull final Player player) {
+    VanishApplyEffectsEvent(@NotNull final Player player) {
         super(player);
     }
 

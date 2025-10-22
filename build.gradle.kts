@@ -18,6 +18,10 @@ repositories {
         name = "papermc"
         url = uri("https://repo.papermc.io/repository/maven-public/")
     }
+    maven {
+        name = "helpchat"
+        url = uri("https://repo.helpch.at/releases")
+    }
 }
 
 dependencies {
@@ -26,6 +30,7 @@ dependencies {
     implementation("space.arim.dazzleconf:dazzleconf-yaml:2.0.0-M1")
     implementation("space.arim.injector:injector:1.1.0-RC2")
     implementation("jakarta.inject:jakarta.inject-api:2.0.1")
+    implementation("me.clip:placeholderapi:2.11.6")
 }
 
 paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION

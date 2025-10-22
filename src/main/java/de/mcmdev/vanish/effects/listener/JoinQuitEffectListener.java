@@ -1,6 +1,6 @@
 package de.mcmdev.vanish.effects.listener;
 
-import de.mcmdev.vanish.effects.event.EffectDispatcher;
+import de.mcmdev.vanish.effects.event.EventDispatcher;
 import de.mcmdev.vanish.storage.Storage;
 import jakarta.inject.Inject;
 import org.bukkit.entity.Player;
@@ -12,12 +12,12 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public final class JoinQuitEffectListener implements Listener {
 
     private final Storage storage;
-    private final EffectDispatcher effectDispatcher;
+    private final EventDispatcher eventDispatcher;
 
     @Inject
-    public JoinQuitEffectListener(final Storage storage, final EffectDispatcher effectDispatcher) {
+    public JoinQuitEffectListener(final Storage storage, final EventDispatcher eventDispatcher) {
         this.storage = storage;
-        this.effectDispatcher = effectDispatcher;
+        this.eventDispatcher = eventDispatcher;
     }
 
     @EventHandler
@@ -28,7 +28,7 @@ public final class JoinQuitEffectListener implements Listener {
             return;
         }
 
-        effectDispatcher.applyVanish(player);
+        eventDispatcher.applyEffects(player);
     }
 
     @EventHandler
@@ -39,7 +39,7 @@ public final class JoinQuitEffectListener implements Listener {
             return;
         }
 
-        effectDispatcher.clearVanish(player);
+        eventDispatcher.clearEvents(player);
     }
 
 }

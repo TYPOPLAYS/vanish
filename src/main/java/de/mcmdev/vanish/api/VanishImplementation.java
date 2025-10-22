@@ -1,6 +1,6 @@
 package de.mcmdev.vanish.api;
 
-import de.mcmdev.vanish.effects.event.EffectDispatcher;
+import de.mcmdev.vanish.effects.event.EventDispatcher;
 import de.mcmdev.vanish.storage.Storage;
 import de.mcmdev.vanish.visibility.VisibilityCalculator;
 import org.bukkit.Bukkit;
@@ -11,12 +11,12 @@ import java.util.UUID;
 final class VanishImplementation implements VanishApi {
 
     private final Storage storage;
-    private final EffectDispatcher effectDispatcher;
+    private final EventDispatcher eventDispatcher;
     private final VisibilityCalculator visibilityCalculator;
 
-    VanishImplementation(final Storage storage, final EffectDispatcher effectDispatcher, final VisibilityCalculator visibilityCalculator) {
+    VanishImplementation(final Storage storage, final EventDispatcher eventDispatcher, final VisibilityCalculator visibilityCalculator) {
         this.storage = storage;
-        this.effectDispatcher = effectDispatcher;
+        this.eventDispatcher = eventDispatcher;
         this.visibilityCalculator = visibilityCalculator;
     }
 
@@ -35,7 +35,8 @@ final class VanishImplementation implements VanishApi {
         storage.setVanished(uuid, true);
 
         if (player != null) {
-            effectDispatcher.applyVanish(player);
+            eventDispatcher.applyEffects(player);
+            eventDispatcher.enter(player);
         }
     }
 
@@ -55,7 +56,8 @@ final class VanishImplementation implements VanishApi {
 
 
         if (player != null) {
-            effectDispatcher.clearVanish(player);
+            eventDispatcher.exit(player);
+            eventDispatcher.clearEvents(player);
         }
     }
 
@@ -111,7 +113,7 @@ final class VanishImplementation implements VanishApi {
         storage.setVanishLevelOverride(uuid, value);
 
         if(player != null) {
-            effectDispatcher.recalculate(player);
+            eventDispatcher.recalculate(player);
         }
     }
 

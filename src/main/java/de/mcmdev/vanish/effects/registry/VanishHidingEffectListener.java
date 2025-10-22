@@ -2,9 +2,9 @@ package de.mcmdev.vanish.effects.registry;
 
 import de.mcmdev.vanish.VanishPlugin;
 import de.mcmdev.vanish.api.VanishApi;
-import de.mcmdev.vanish.effects.event.VanishApplyEffectEvent;
-import de.mcmdev.vanish.effects.event.VanishClearEffectEvent;
-import de.mcmdev.vanish.effects.event.VanishRecalculateEffectEvent;
+import de.mcmdev.vanish.effects.event.VanishApplyEffectsEvent;
+import de.mcmdev.vanish.effects.event.VanishClearEffectsEvent;
+import de.mcmdev.vanish.effects.event.VanishRecalculateEvent;
 import jakarta.inject.Inject;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -24,19 +24,19 @@ final class VanishHidingEffectListener implements Listener {
     }
 
     @EventHandler
-    private void onVanish(final VanishApplyEffectEvent event) {
+    private void onVanish(final VanishApplyEffectsEvent event) {
         event.getPlayer().setVisibleByDefault(false);
 
         recalculateForTarget(event.getPlayer());
     }
 
     @EventHandler
-    private void onUnvanish(final VanishClearEffectEvent event) {
+    private void onUnvanish(final VanishClearEffectsEvent event) {
         event.getPlayer().setVisibleByDefault(true);
     }
 
     @EventHandler
-    private void onRecalculate(final VanishRecalculateEffectEvent event) {
+    private void onRecalculate(final VanishRecalculateEvent event) {
         recalculateForTarget(event.getPlayer());
     }
 

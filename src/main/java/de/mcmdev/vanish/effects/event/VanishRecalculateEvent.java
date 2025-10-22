@@ -5,11 +5,11 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 import org.jetbrains.annotations.NotNull;
 
-public final class VanishRecalculateEffectEvent extends PlayerEvent {
+public final class VanishRecalculateEvent extends PlayerEvent {
 
     private static final HandlerList handlers = new HandlerList();
 
-    VanishRecalculateEffectEvent(@NotNull final Player player) {
+    VanishRecalculateEvent(@NotNull final Player player) {
         super(player);
     }
 

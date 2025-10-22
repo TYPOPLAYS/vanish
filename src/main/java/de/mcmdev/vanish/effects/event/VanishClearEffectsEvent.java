@@ -15,11 +15,11 @@ import org.jetbrains.annotations.NotNull;
  * mode, this event ensures that corresponding effects such as scheduler tasks or
  * visibility settings are cleared.
  */
-public final class VanishClearEffectEvent extends PlayerEvent {
+public final class VanishClearEffectsEvent extends PlayerEvent {
 
     private static final HandlerList handlers = new HandlerList();
 
-    VanishClearEffectEvent(@NotNull final Player player) {
+    VanishClearEffectsEvent(@NotNull final Player player) {
         super(player);
     }
 
