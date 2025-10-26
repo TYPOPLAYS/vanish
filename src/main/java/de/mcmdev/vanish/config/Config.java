@@ -3,7 +3,9 @@ package de.mcmdev.vanish.config;
 import space.arim.dazzleconf.engine.Comments;
 import space.arim.dazzleconf.engine.liaison.SubSection;
 
-@Comments("This is the configuration file header.")
+import java.util.List;
+
+@Comments("Configuration file for mcmdev's vanish plugin")
 public interface Config {
 
     default StorageType storageType() {
@@ -12,6 +14,18 @@ public interface Config {
 
     default int maximumHidingLevel() {
         return 100;
+    }
+
+    default CommandHook vanishHooks() {
+        return CommandHook.empty();
+    }
+
+    default CommandHook unvanishHooks() {
+        return CommandHook.empty();
+    }
+
+    default CommandHook playerClickHook() {
+        return CommandHook.of("inv %player_name%");
     }
 
     @SubSection

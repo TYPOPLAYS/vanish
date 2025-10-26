@@ -19,16 +19,17 @@ public final class ConfigModule {
 
     public Configuration<Config> configuration() {
         return Configuration.defaultBuilder(Config.class)
-            .addSimpleSerializer(new TypeToken<>(){}, new MessageTypeLiaison())
+            .addSimpleSerializer(new TypeToken<>(){}, new Message.Serdes())
+            .addSimpleSerializer(new TypeToken<>(){}, new CommandHook.Serdes())
             .build();
     }
 
-    public Backend backend(VanishPlugin vanishPlugin) throws IOException {
+    public Backend backend(final VanishPlugin vanishPlugin) throws IOException {
         Files.createDirectories(vanishPlugin.getDataPath());
         return new YamlBackend(new PathRoot(vanishPlugin.getDataPath().resolve("config.yml")));
     }
 
-    public Config config(Configuration<Config> configuration, Backend backend) {
+    public Config config(final Configuration<Config> configuration, final Backend backend) {
         return configuration.configureOrFallback(backend, new StandardErrorPrint(printable -> log.error(printable.printString())));
     }
 

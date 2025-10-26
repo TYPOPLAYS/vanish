@@ -7,6 +7,7 @@ import de.mcmdev.vanish.effects.registry.EffectRegistry;
 import de.mcmdev.vanish.effects.listener.JoinQuitEffectListener;
 import de.mcmdev.vanish.integration.OpenInvIntegration;
 import de.mcmdev.vanish.integration.VanishExpansion;
+import de.mcmdev.vanish.listeners.HookInteractionListener;
 import de.mcmdev.vanish.listeners.ProtectionListener;
 import de.mcmdev.vanish.storage.StorageModule;
 import de.mcmdev.vanish.visibility.VisibilityCalculatorModule;
@@ -41,6 +42,7 @@ public class VanishPlugin extends JavaPlugin {
         injector.request(EffectRegistry.class).register();
         injector.request(JoinQuitEffectListener.class).register();
         injector.request(ProtectionListener.class).register();
+        injector.request(HookInteractionListener.class).register();
 
         // Expansions (also mostly just listeners)
         if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
