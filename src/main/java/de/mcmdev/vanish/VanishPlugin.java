@@ -6,7 +6,7 @@ import de.mcmdev.vanish.config.ConfigModule;
 import de.mcmdev.vanish.effects.registry.EffectRegistry;
 import de.mcmdev.vanish.effects.listener.JoinQuitEffectListener;
 import de.mcmdev.vanish.integration.VanishExpansion;
-import de.mcmdev.vanish.protection.Protection;
+import de.mcmdev.vanish.listeners.ProtectionListener;
 import de.mcmdev.vanish.storage.StorageModule;
 import de.mcmdev.vanish.visibility.VisibilityCalculatorModule;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
@@ -37,10 +37,10 @@ public class VanishPlugin extends JavaPlugin {
                 .addBindModules(new ConfigModule(), new StorageModule(), new VisibilityCalculatorModule(), new ApiModule())
                 .build();
 
-        injector.request(Protection.class).register();
+        // Listeners
         injector.request(EffectRegistry.class).register();
-
-        Bukkit.getPluginManager().registerEvents(injector.request(JoinQuitEffectListener.class), this);
+        injector.request(JoinQuitEffectListener.class).register();
+        injector.request(ProtectionListener.class).register();
 
         getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> event.registrar().register(injector.request(VanishCommand.class).register()));
 
