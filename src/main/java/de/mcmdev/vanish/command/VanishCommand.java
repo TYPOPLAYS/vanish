@@ -49,11 +49,11 @@ public class VanishCommand {
             return 1;
         }
 
-        if (vanishApi.isVanished(player.getUniqueId())) {
-            vanishApi.unvanish(player.getUniqueId());
+        if (vanishApi.isVanished(player)) {
+            vanishApi.unvanish(player);
             config.messages().toggleOff().send(player);
         } else {
-            vanishApi.vanish(player.getUniqueId());
+            vanishApi.vanish(player);
             config.messages().toggleOn().send(player);
         }
 

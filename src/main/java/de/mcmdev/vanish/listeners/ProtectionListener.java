@@ -11,10 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageByBlockEvent;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.*;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.world.GenericGameEvent;
 
@@ -50,7 +48,7 @@ public final class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityDamageByEntity(final EntityDamageByEntityEvent event) {
         if(event.getEntity() instanceof final Player player) {
-            if(api.isVanished(player.getUniqueId())) {
+            if(api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
@@ -65,7 +63,7 @@ public final class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityDamageByBlock(final EntityDamageByBlockEvent event) {
         if(event.getEntity() instanceof final Player player) {
-            if(api.isVanished(player.getUniqueId())) {
+            if(api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
@@ -74,7 +72,7 @@ public final class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityDamage(final EntityDamageEvent event) {
         if(event.getEntity() instanceof final Player player) {
-            if(api.isVanished(player.getUniqueId())) {
+            if(api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
@@ -83,7 +81,7 @@ public final class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onPlayerInteract(final PlayerInteractEvent event) {
         if (event.getAction() == Action.PHYSICAL) {
-            if(api.isVanished(event.getPlayer().getUniqueId())) {
+            if(api.isVanished(event.getPlayer())) {
                 event.setCancelled(true);
             }
         }   else    {
@@ -96,7 +94,7 @@ public final class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityTarget(final EntityTargetEvent event) {
         if(event.getTarget() instanceof final Player player) {
-            if(api.isVanished(player.getUniqueId())) {
+            if(api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
@@ -105,14 +103,14 @@ public final class ProtectionListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onSculkTrigger(final GenericGameEvent event)   {
         if(event.getEntity() instanceof final Player player) {
-            if(api.isVanished(player.getUniqueId())) {
+            if(api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
     }
 
     private boolean shouldProtect(final Player player, final String actionName) {
-        return api.isVanished(player.getUniqueId()) && !player.hasPermission("vanish.protection." + actionName);
+        return api.isVanished(player) && !player.hasPermission("vanish.protection." + actionName);
     }
 
 }

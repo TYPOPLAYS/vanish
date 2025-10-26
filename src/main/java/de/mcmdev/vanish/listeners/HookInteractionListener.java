@@ -30,7 +30,7 @@ public final class HookInteractionListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onPlayerInteractEntity(final PlayerInteractEntityEvent event)  {
-        if (!api.isVanished(event.getPlayer().getUniqueId())) {
+        if (!api.isVanished(event.getPlayer())) {
             return;
         }
 

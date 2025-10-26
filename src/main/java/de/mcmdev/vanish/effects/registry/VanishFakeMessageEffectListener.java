@@ -25,7 +25,7 @@ public final class VanishFakeMessageEffectListener implements Listener {
 
     @EventHandler
     private void onJoin(final PlayerJoinEvent event) {
-      if (vanishApi.isVanished(event.getPlayer().getUniqueId())) {
+      if (vanishApi.isVanished(event.getPlayer())) {
         event.joinMessage(null);
 
           Bukkit.getOnlinePlayers().stream()
@@ -36,7 +36,7 @@ public final class VanishFakeMessageEffectListener implements Listener {
 
     @EventHandler
     private void onQuit(final PlayerQuitEvent event) {
-      if (vanishApi.isVanished(event.getPlayer().getUniqueId())) {
+      if (vanishApi.isVanished(event.getPlayer())) {
         event.quitMessage(null);
 
           Bukkit.getOnlinePlayers().stream()

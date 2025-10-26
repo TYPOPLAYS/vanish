@@ -61,7 +61,7 @@ public final class VanishExpansion extends PlaceholderExpansion implements Relat
         }
         if(params.equals("count")) {
             return String.valueOf(Bukkit.getOnlinePlayers().stream()
-                    .filter(all -> api.isVanished(all.getUniqueId()))
+                    .filter(all -> api.isVanished(all))
                     .count());
         }
 
@@ -75,7 +75,7 @@ public final class VanishExpansion extends PlaceholderExpansion implements Relat
                 return null;
             }
 
-            if(!api.isVanished(two.getUniqueId())) {
+            if(!api.isVanished(two)) {
                 return PlaceholderAPIPlugin.booleanFalse();
             }
             if(one.equals(two)) return PlaceholderAPIPlugin.booleanTrue();
@@ -87,7 +87,7 @@ public final class VanishExpansion extends PlaceholderExpansion implements Relat
                 return null;
             }
 
-            if(!api.isVanished(two.getUniqueId())) {
+            if(!api.isVanished(two)) {
                 return PlaceholderAPIPlugin.booleanTrue();
             }
             if(one.equals(two)) return PlaceholderAPIPlugin.booleanTrue();

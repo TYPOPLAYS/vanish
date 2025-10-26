@@ -51,7 +51,7 @@ paperPluginYaml {
     dependencies {
         server {
             register("PlaceholderAPI") {
-                required = false
+                required = true
                 load = PaperPluginYaml.Load.BEFORE
             }
             register("OpenInv") {

@@ -45,9 +45,7 @@ public class VanishPlugin extends JavaPlugin {
         injector.request(HookInteractionListener.class).register();
 
         // Expansions (also mostly just listeners)
-        if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            injector.request(VanishExpansion.class).register();
-        }
+        injector.request(VanishExpansion.class).register();
         if(Bukkit.getPluginManager().isPluginEnabled("OpenInv")) {
             injector.request(OpenInvIntegration.class).register();
         }

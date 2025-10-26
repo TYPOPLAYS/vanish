@@ -49,7 +49,7 @@ public final class VanishHidingEffectListener implements Listener {
         for (final Player viewer : Bukkit.getOnlinePlayers()) {
             if (api.canSee(viewer, target)) {
                 viewer.showPlayer(plugin, target);
-            } else if (api.isVanished(target.getUniqueId())) {
+            } else if (api.isVanished(target)) {
                 viewer.hidePlayer(plugin, target);
             }
         }
@@ -59,7 +59,7 @@ public final class VanishHidingEffectListener implements Listener {
         for (final Player target : Bukkit.getOnlinePlayers()) {
             if (api.canSee(viewer, target)) {
                 viewer.showPlayer(plugin, target);
-            } else if (api.isVanished(target.getUniqueId())) {
+            } else if (api.isVanished(target)) {
                 viewer.hidePlayer(plugin, target);
             }
         }
