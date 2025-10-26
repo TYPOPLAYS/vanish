@@ -11,19 +11,22 @@ public final class EffectRegistry {
     private final VanishMetadataEffectListener vanishMetadataEffectListener;
     private final VanishFakeMessageEffectListener vanishFakeMessageEffectListener;
     private final VanishStatusScheduler vanishStatusScheduler;
+    private final VanishAffectSpawningEffectListener vanishAffectSpawningEffectListener;
 
     @Inject
     public EffectRegistry(final VanishPlugin plugin,
                           final VanishHidingEffectListener vanishHidingEffectListener,
                           final VanishMetadataEffectListener vanishMetadataEffectListener,
                           final VanishFakeMessageEffectListener vanishFakeMessageEffectListener,
-                          final VanishStatusScheduler vanishStatusScheduler
+                          final VanishStatusScheduler vanishStatusScheduler,
+                          final VanishAffectSpawningEffectListener vanishAffectSpawningEffectListener
     ) {
         this.plugin = plugin;
         this.vanishHidingEffectListener = vanishHidingEffectListener;
         this.vanishMetadataEffectListener = vanishMetadataEffectListener;
         this.vanishFakeMessageEffectListener = vanishFakeMessageEffectListener;
         this.vanishStatusScheduler = vanishStatusScheduler;
+        this.vanishAffectSpawningEffectListener = vanishAffectSpawningEffectListener;
     }
 
     public void register() {
@@ -31,6 +34,7 @@ public final class EffectRegistry {
         Bukkit.getPluginManager().registerEvents(vanishMetadataEffectListener, plugin);
         Bukkit.getPluginManager().registerEvents(vanishFakeMessageEffectListener, plugin);
         Bukkit.getPluginManager().registerEvents(vanishStatusScheduler, plugin);
+        Bukkit.getPluginManager().registerEvents(vanishAffectSpawningEffectListener, plugin);
     }
 
 }
