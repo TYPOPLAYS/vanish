@@ -32,9 +32,11 @@ public class VanishCommand {
 
     private LiteralCommandNode<CommandSourceStack> createCommandNode() {
         return Commands.literal("vanish")
+                .requires(commandSourceStack -> commandSourceStack.getSender().hasPermission("vanish.command"))
                 .executes(this::run)
                 .then(
                         Commands.literal("setlevel")
+                                .requires(commandSourceStack -> commandSourceStack.getSender().hasPermission("vanish.command.setlevel"))
                                 .executes(this::runSetlevel)
                                 .then(
                                         Commands.argument("level", IntegerArgumentType.integer(0, config.maximumHidingLevel()))

@@ -60,6 +60,18 @@ paperPluginYaml {
             }
         }
     }
+
+    permissions {
+        register("vanish.command")
+        register("vanish.command.setlevel")
+        register("vanish.see.<level>")
+        register("vanish.use.<level>")
+        register("vanish.protection.block_place")
+        register("vanish.protection.block_break")
+        register("vanish.protection.entity_damage")
+        register("vanish.protection.player_interact")
+        register("vanish.protection.player_drop")
+    }
 }
 
 runPaper {
