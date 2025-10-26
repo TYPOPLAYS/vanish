@@ -14,7 +14,7 @@ public final class VanishAffectSpawningEffectListener implements Listener {
 
     @EventHandler
     private void onUnvanish(final VanishClearEffectsEvent event)    {
-        event.getPlayer().setAffectsSpawning(false);
+        event.getPlayer().setAffectsSpawning(true);
     }
 
 }
