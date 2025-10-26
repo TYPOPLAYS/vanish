@@ -16,7 +16,7 @@ final class PersistentDataContainerStorage implements Storage {
     @Override
     public boolean isVanished(final UUID uuid) {
         final OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
-        if (!player.hasPlayedBefore()) return false;
+        if (!player.isOnline() && !player.hasPlayedBefore()) return false;
         return player.getPersistentDataContainer().getOrDefault(stateKey, PersistentDataType.BOOLEAN, false);
     }
 
@@ -32,7 +32,7 @@ final class PersistentDataContainerStorage implements Storage {
     @Override
     public Integer getVanishLevelOverride(final UUID uuid) {
         final OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
-        if (!player.hasPlayedBefore()) return null;
+        if (!player.isOnline() && !player.hasPlayedBefore())  return null;
         return player.getPersistentDataContainer().get(levelOverrideKey, PersistentDataType.INTEGER);
     }
 

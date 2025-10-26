@@ -5,6 +5,7 @@ import de.mcmdev.vanish.command.VanishCommand;
 import de.mcmdev.vanish.config.ConfigModule;
 import de.mcmdev.vanish.effects.registry.EffectRegistry;
 import de.mcmdev.vanish.effects.listener.JoinQuitEffectListener;
+import de.mcmdev.vanish.integration.VanishExpansion;
 import de.mcmdev.vanish.protection.Protection;
 import de.mcmdev.vanish.storage.StorageModule;
 import de.mcmdev.vanish.visibility.VisibilityCalculatorModule;
@@ -29,11 +30,6 @@ public class VanishPlugin extends JavaPlugin {
         }
     }
 
-    @Override
-    public void onDisable() {
-
-    }
-
     private void enable() {
         this.injector = new InjectorBuilder()
                 .specification(SpecificationSupport.JAKARTA)
@@ -47,5 +43,7 @@ public class VanishPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(injector.request(JoinQuitEffectListener.class), this);
 
         getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> event.registrar().register(injector.request(VanishCommand.class).register()));
+
+        injector.request(VanishExpansion.class).register();
     }
 }

@@ -14,6 +14,7 @@ public interface Config {
         return 100;
     }
 
+    @SubSection
     default Messages messages() {
       return new Messages() {};
     }
@@ -22,7 +23,6 @@ public interface Config {
         PERSISTENT_DATA_CONTAINER,
     }
 
-    @SubSection
     interface Messages {
 
         default Message actionbar() {
@@ -50,19 +50,19 @@ public interface Config {
         }
 
         default Message fakeJoin() {
-          return Message.of("<yellow>%player_name joined the game.</yellow>");
+          return Message.of("<yellow>%player_name% joined the game.</yellow>");
         }
 
         default Message fakeQuit() {
-          return Message.of("<yellow>%player_name left the game.</yellow>");
+          return Message.of("<yellow>%player_name% left the game.</yellow>");
         }
 
         default Message notifyJoin() {
-          return Message.of("<aqua>%player_name joined the game while invisible.</aqua>");
+          return Message.of("<aqua>%player_name% joined the game while invisible.</aqua>");
         }
 
         default Message notifyQuit() {
-          return Message.of("<aqua>%player_name left the game while invisible.</aqua>");
+          return Message.of("<aqua>%player_name% left the game while invisible.</aqua>");
         }
 
     }

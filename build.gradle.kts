@@ -1,3 +1,4 @@
+import xyz.jpenilla.resourcefactory.paper.PaperPluginYaml
 import xyz.jpenilla.runpaper.task.RunServer
 
 plugins {
@@ -20,25 +21,35 @@ repositories {
     }
     maven {
         name = "helpchat"
-        url = uri("https://repo.helpch.at/releases")
+        url = uri("https://repo.helpch.at/snapshots")
     }
 }
 
 dependencies {
     paperweight.paperDevBundle("1.21.8-R0.1-SNAPSHOT")
-    implementation("space.arim.dazzleconf:dazzleconf-core:2.0.0-M1")
-    implementation("space.arim.dazzleconf:dazzleconf-yaml:2.0.0-M1")
-    implementation("space.arim.injector:injector:1.1.0-RC2")
-    implementation("jakarta.inject:jakarta.inject-api:2.0.1")
-    implementation("me.clip:placeholderapi:2.11.6")
+    runtimeDownload("space.arim.dazzleconf:dazzleconf-core:2.0.0-M1")
+    runtimeDownload("space.arim.dazzleconf:dazzleconf-yaml:2.0.0-M1")
+    runtimeDownload("space.arim.injector:injector:1.1.0-RC2")
+    runtimeDownload("jakarta.inject:jakarta.inject-api:2.0.1")
+    compileOnly("me.clip:placeholderapi:2.11.7-DEV-212")
 }
 
 paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
 
 paperPluginYaml {
     main = "de.mcmdev.vanish.VanishPlugin"
+    loader = "xyz.jpenilla.gremlin.runtime.platformsupport.DefaultsPaperPluginLoader"
     apiVersion = "1.21"
     foliaSupported = true
+
+    dependencies {
+        server {
+            register("PlaceholderAPI") {
+                required = true
+                load = PaperPluginYaml.Load.BEFORE
+            }
+        }
+    }
 }
 
 runPaper {

@@ -18,7 +18,7 @@ final class VanishFakeMessageEffectListener implements Listener {
     private final Config config;
 
     @Inject
-    public VanishFakeMessageEffectListener(VanishApi vanishApi, final Config config) {
+    public VanishFakeMessageEffectListener(final VanishApi vanishApi, final Config config) {
       this.vanishApi = vanishApi;
       this.config = config;
     }
@@ -27,29 +27,29 @@ final class VanishFakeMessageEffectListener implements Listener {
     private void onJoin(final PlayerJoinEvent event) {
       if (vanishApi.isVanished(event.getPlayer().getUniqueId())) {
         event.joinMessage(null);
-      }
 
-      Bukkit.getOnlinePlayers().stream()
-          .filter(viewer -> vanishApi.canSee(viewer, event.getPlayer()))
-          .forEach(player -> config.messages().notifyJoin().send(player, event.getPlayer()));
+          Bukkit.getOnlinePlayers().stream()
+                  .filter(viewer -> vanishApi.canSee(viewer, event.getPlayer()))
+                  .forEach(player -> config.messages().notifyJoin().send(player, event.getPlayer()));
+      }
     }
 
     @EventHandler
     private void onQuit(final PlayerQuitEvent event) {
       if (vanishApi.isVanished(event.getPlayer().getUniqueId())) {
         event.quitMessage(null);
-      }
 
-      Bukkit.getOnlinePlayers().stream()
-          .filter(viewer -> vanishApi.canSee(viewer, event.getPlayer()))
-          .forEach(player -> config.messages().notifyQuit().send(player, event.getPlayer()));
+          Bukkit.getOnlinePlayers().stream()
+                  .filter(viewer -> vanishApi.canSee(viewer, event.getPlayer()))
+                  .forEach(player -> config.messages().notifyQuit().send(player, event.getPlayer()));
+      }
     }
 
     @EventHandler
     private void onEnter(final VanishEnterEvent event) {
       final Player target = event.getPlayer();
 
-      for (Player viewer : Bukkit.getOnlinePlayers()) {
+      for (final Player viewer : Bukkit.getOnlinePlayers()) {
         if (!vanishApi.canSee(viewer, target)) {
           config.messages().fakeQuit().send(viewer, target);
         }
@@ -60,7 +60,7 @@ final class VanishFakeMessageEffectListener implements Listener {
   private void onExit(final VanishExitEvent event) {
     final Player target = event.getPlayer();
 
-    for (Player viewer : Bukkit.getOnlinePlayers()) {
+    for (final Player viewer : Bukkit.getOnlinePlayers()) {
       if (!vanishApi.canSee(viewer, target)) {
         config.messages().fakeJoin().send(viewer, target);
       }

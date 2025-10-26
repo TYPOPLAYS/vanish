@@ -39,7 +39,8 @@ public final class JoinQuitEffectListener implements Listener {
             return;
         }
 
-        eventDispatcher.clearEvents(player);
+        // This is counterproductive since we want this to stay as long as possible.
+        // eventDispatcher.clearEvents(player);
     }
 
 }
