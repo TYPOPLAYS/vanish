@@ -109,6 +109,22 @@ public final class ProtectionListener implements Listener {
         }
     }
 
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+    private void onPlayerDropItem(final PlayerDropItemEvent event) {
+        if(shouldProtect(event.getPlayer(), "player_drop")) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+    private void onEntityPickupItem(final EntityPickupItemEvent event) {
+        if (event.getEntity() instanceof final Player player) {
+            if(api.isVanished(player)) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
     private boolean shouldProtect(final Player player, final String actionName) {
         return api.isVanished(player) && !player.hasPermission("vanish.protection." + actionName);
     }
