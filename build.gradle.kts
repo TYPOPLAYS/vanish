@@ -23,6 +23,11 @@ repositories {
         name = "helpchat"
         url = uri("https://repo.helpch.at/snapshots")
     }
+    // Needed for OpenInv - Yuck!
+    maven {
+        name = "jitpack"
+        url = uri("https://jitpack.io")
+    }
 }
 
 dependencies {
@@ -32,6 +37,7 @@ dependencies {
     runtimeDownload("space.arim.injector:injector:1.1.0-RC2")
     runtimeDownload("jakarta.inject:jakarta.inject-api:2.0.1")
     compileOnly("me.clip:placeholderapi:2.11.7-DEV-212")
+    compileOnly("com.github.Jikoo:OpenInv:5.1.15")
 }
 
 paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
@@ -45,7 +51,11 @@ paperPluginYaml {
     dependencies {
         server {
             register("PlaceholderAPI") {
-                required = true
+                required = false
+                load = PaperPluginYaml.Load.BEFORE
+            }
+            register("OpenInv") {
+                required = false
                 load = PaperPluginYaml.Load.BEFORE
             }
         }
@@ -60,6 +70,12 @@ runPaper {
 
 tasks.getByName("runFolia", RunServer::class) {
     jvmArgs("-XX:+AllowEnhancedClassRedefinition")
+
+    downloadPlugins {
+        url("https://ci.lucko.me/job/LuckPerms-Folia/9/artifact/bukkit/loader/build/libs/LuckPerms-Bukkit-5.5.11.jar")
+        url("https://github.com/Jikoo/OpenInv/releases/download/5.1.15/OpenInv.jar")
+        url("https://ci.extendedclip.com/job/PlaceholderAPI/212/artifact/build/libs/PlaceholderAPI-2.11.7-DEV-212.jar")
+    }
 }
 
 tasks.assemble {

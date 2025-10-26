@@ -5,11 +5,11 @@ import de.mcmdev.vanish.command.VanishCommand;
 import de.mcmdev.vanish.config.ConfigModule;
 import de.mcmdev.vanish.effects.registry.EffectRegistry;
 import de.mcmdev.vanish.effects.listener.JoinQuitEffectListener;
+import de.mcmdev.vanish.integration.OpenInvIntegration;
 import de.mcmdev.vanish.integration.VanishExpansion;
 import de.mcmdev.vanish.listeners.ProtectionListener;
 import de.mcmdev.vanish.storage.StorageModule;
 import de.mcmdev.vanish.visibility.VisibilityCalculatorModule;
-import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import space.arim.injector.Injector;
@@ -42,8 +42,16 @@ public class VanishPlugin extends JavaPlugin {
         injector.request(JoinQuitEffectListener.class).register();
         injector.request(ProtectionListener.class).register();
 
-        getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> event.registrar().register(injector.request(VanishCommand.class).register()));
+        // Expansions (also mostly just listeners)
+        if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            injector.request(VanishExpansion.class).register();
+        }
+        if(Bukkit.getPluginManager().isPluginEnabled("OpenInv")) {
+            injector.request(OpenInvIntegration.class).register();
+        }
 
-        injector.request(VanishExpansion.class).register();
+        // Vanish command
+        injector.request(VanishCommand.class).register();
+
     }
 }

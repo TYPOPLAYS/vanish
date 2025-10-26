@@ -3,26 +3,34 @@ package de.mcmdev.vanish.command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import de.mcmdev.vanish.VanishPlugin;
 import de.mcmdev.vanish.api.VanishApi;
 import de.mcmdev.vanish.config.Config;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
+import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import jakarta.inject.Inject;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;
 
 public class VanishCommand {
 
+    private final VanishPlugin plugin;
     private final VanishApi vanishApi;
     private final Config config;
 
     @Inject
-    public VanishCommand(final VanishApi vanishApi, final Config config) {
+    public VanishCommand(final VanishPlugin plugin, final VanishApi vanishApi, final Config config) {
+        this.plugin = plugin;
         this.vanishApi = vanishApi;
         this.config = config;
     }
 
-    public LiteralCommandNode<CommandSourceStack> register() {
+    public void register() {
+        plugin.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> event.registrar().register(createCommandNode()));
+    }
+
+    private LiteralCommandNode<CommandSourceStack> createCommandNode() {
         return Commands.literal("vanish")
                 .executes(this::run)
                 .then(
