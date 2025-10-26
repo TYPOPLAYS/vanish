@@ -12,7 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-final class VanishHidingEffectListener implements Listener {
+public final class VanishHidingEffectListener implements Listener {
 
     private final VanishPlugin plugin;
     private final VanishApi api;

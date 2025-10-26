@@ -10,7 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 
-final class VanishMetadataEffectListener implements Listener {
+public final class VanishMetadataEffectListener implements Listener {
 
     private final VanishPlugin plugin;
 

@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-final class VanishStatusScheduler implements Listener {
+public final class VanishStatusScheduler implements Listener {
 
     private final VanishApi vanishApi;
     private final VanishPlugin plugin;
@@ -26,7 +26,7 @@ final class VanishStatusScheduler implements Listener {
 
     @Inject
     public VanishStatusScheduler(final VanishApi vanishApi, final VanishPlugin plugin,
-                                 Config config) {
+                                 final Config config) {
         this.vanishApi = vanishApi;
         this.plugin = plugin;
         this.config = config;

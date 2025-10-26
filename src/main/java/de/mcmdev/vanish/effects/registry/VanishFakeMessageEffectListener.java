@@ -12,7 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-final class VanishFakeMessageEffectListener implements Listener {
+public final class VanishFakeMessageEffectListener implements Listener {
 
     private final VanishApi vanishApi;
     private final Config config;
