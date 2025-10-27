@@ -28,3 +28,6 @@
 - Integrations
   - OpenInv SilentChest [/]
   - PAPI Expansion [/]
+
+## TODO
+- Properly separate protection and events
