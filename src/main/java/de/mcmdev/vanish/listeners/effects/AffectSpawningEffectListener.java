@@ -1,11 +1,11 @@
-package de.mcmdev.vanish.effects.registry;
+package de.mcmdev.vanish.listeners.effects;
 
-import de.mcmdev.vanish.effects.event.VanishApplyEffectsEvent;
-import de.mcmdev.vanish.effects.event.VanishClearEffectsEvent;
+import de.mcmdev.vanish.events.VanishApplyEffectsEvent;
+import de.mcmdev.vanish.events.VanishClearEffectsEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-public final class VanishAffectSpawningEffectListener implements Listener {
+public final class AffectSpawningEffectListener implements Listener {
 
     @EventHandler
     private void onVanish(final VanishApplyEffectsEvent event)    {

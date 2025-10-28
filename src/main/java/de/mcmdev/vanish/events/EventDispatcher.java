@@ -1,4 +1,4 @@
-package de.mcmdev.vanish.effects.event;
+package de.mcmdev.vanish.events;
 
 import org.bukkit.entity.Player;
 

@@ -1,8 +1,8 @@
-package de.mcmdev.vanish.effects.registry;
+package de.mcmdev.vanish.listeners.effects;
 
 import de.mcmdev.vanish.VanishPlugin;
-import de.mcmdev.vanish.effects.event.VanishApplyEffectsEvent;
-import de.mcmdev.vanish.effects.event.VanishClearEffectsEvent;
+import de.mcmdev.vanish.events.VanishApplyEffectsEvent;
+import de.mcmdev.vanish.events.VanishClearEffectsEvent;
 import jakarta.inject.Inject;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,12 +10,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 
-public final class VanishMetadataEffectListener implements Listener {
+public final class MetadataEffectListener implements Listener {
 
     private final VanishPlugin plugin;
 
     @Inject
-    public VanishMetadataEffectListener(final VanishPlugin plugin) {
+    public MetadataEffectListener(final VanishPlugin plugin) {
         this.plugin = plugin;
     }
 

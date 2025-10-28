@@ -1,6 +1,6 @@
 package de.mcmdev.vanish.api;
 
-import de.mcmdev.vanish.effects.event.EventDispatcher;
+import de.mcmdev.vanish.events.EventDispatcher;
 import de.mcmdev.vanish.storage.Storage;
 import de.mcmdev.vanish.visibility.VisibilityCalculator;
 

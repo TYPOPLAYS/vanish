@@ -1,9 +1,9 @@
-package de.mcmdev.vanish.effects.registry;
+package de.mcmdev.vanish.listeners;
 
 import de.mcmdev.vanish.api.VanishApi;
 import de.mcmdev.vanish.config.Config;
-import de.mcmdev.vanish.effects.event.VanishEnterEvent;
-import de.mcmdev.vanish.effects.event.VanishExitEvent;
+import de.mcmdev.vanish.events.VanishEnterEvent;
+import de.mcmdev.vanish.events.VanishExitEvent;
 import jakarta.inject.Inject;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -12,13 +12,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public final class VanishFakeMessageEffectListener implements Listener {
+public final class FakeMessageListener implements Listener {
 
     private final VanishApi vanishApi;
     private final Config config;
 
     @Inject
-    public VanishFakeMessageEffectListener(final VanishApi vanishApi, final Config config) {
+    public FakeMessageListener(final VanishApi vanishApi, final Config config) {
       this.vanishApi = vanishApi;
       this.config = config;
     }

@@ -1,10 +1,10 @@
-package de.mcmdev.vanish.effects.registry;
+package de.mcmdev.vanish.listeners.effects;
 
 import de.mcmdev.vanish.VanishPlugin;
 import de.mcmdev.vanish.api.VanishApi;
 import de.mcmdev.vanish.config.Config;
-import de.mcmdev.vanish.effects.event.VanishApplyEffectsEvent;
-import de.mcmdev.vanish.effects.event.VanishClearEffectsEvent;
+import de.mcmdev.vanish.events.VanishApplyEffectsEvent;
+import de.mcmdev.vanish.events.VanishClearEffectsEvent;
 import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import jakarta.inject.Inject;
 import net.kyori.adventure.text.Component;

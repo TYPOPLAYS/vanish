@@ -1,31 +1,23 @@
-package de.mcmdev.vanish.effects.listener;
+package de.mcmdev.vanish.listeners;
 
-import de.mcmdev.vanish.VanishPlugin;
-import de.mcmdev.vanish.effects.event.EventDispatcher;
+import de.mcmdev.vanish.events.EventDispatcher;
 import de.mcmdev.vanish.storage.Storage;
 import jakarta.inject.Inject;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public final class JoinQuitEffectListener implements Listener {
+public final class JoinQuitDispatcherListener implements Listener {
 
-    private final VanishPlugin plugin;
     private final Storage storage;
     private final EventDispatcher eventDispatcher;
 
     @Inject
-    public JoinQuitEffectListener(final VanishPlugin plugin, final Storage storage, final EventDispatcher eventDispatcher) {
-        this.plugin = plugin;
+    public JoinQuitDispatcherListener(final Storage storage, final EventDispatcher eventDispatcher) {
         this.storage = storage;
         this.eventDispatcher = eventDispatcher;
-    }
-
-    public void register() {
-        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler

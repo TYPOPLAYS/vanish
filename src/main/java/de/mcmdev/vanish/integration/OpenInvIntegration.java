@@ -2,8 +2,8 @@ package de.mcmdev.vanish.integration;
 
 import com.lishid.openinv.IOpenInv;
 import de.mcmdev.vanish.VanishPlugin;
-import de.mcmdev.vanish.effects.event.VanishApplyEffectsEvent;
-import de.mcmdev.vanish.effects.event.VanishClearEffectsEvent;
+import de.mcmdev.vanish.events.VanishApplyEffectsEvent;
+import de.mcmdev.vanish.events.VanishClearEffectsEvent;
 import jakarta.inject.Inject;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
