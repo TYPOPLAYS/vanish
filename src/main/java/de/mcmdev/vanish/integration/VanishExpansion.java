@@ -60,9 +60,16 @@ public final class VanishExpansion extends PlaceholderExpansion implements Relat
             return api.isVanished(player.getUniqueId()) ? PlaceholderAPIPlugin.booleanTrue() : PlaceholderAPIPlugin.booleanFalse();
         }
         if(params.equals("count")) {
-            return String.valueOf(Bukkit.getOnlinePlayers().stream()
-                    .filter(all -> api.isVanished(all))
-                    .count());
+            if(player instanceof final Player viewer) {
+                return String.valueOf(Bukkit.getOnlinePlayers().stream()
+                        .filter(api::isVanished)
+                        .filter(target -> api.canSee(viewer, target))
+                        .count());
+            }   else {
+                return String.valueOf(Bukkit.getOnlinePlayers().stream()
+                        .filter(api::isVanished)
+                        .count());
+            }
         }
 
         return null;
