@@ -23,6 +23,10 @@ repositories {
         name = "helpchat"
         url = uri("https://repo.helpch.at/snapshots")
     }
+    maven {
+        name = "scarsz"
+        url = uri("https://nexus.scarsz.me/content/groups/public/")
+    }
     // Needed for OpenInv - Yuck!
     maven {
         name = "jitpack"
@@ -38,6 +42,7 @@ dependencies {
     runtimeDownload("jakarta.inject:jakarta.inject-api:2.0.1")
     compileOnly("me.clip:placeholderapi:2.11.7-DEV-212")
     compileOnly("com.github.Jikoo:OpenInv:5.1.15")
+    compileOnly("com.discordsrv:discordsrv:1.28.0")
 }
 
 paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
@@ -55,6 +60,10 @@ paperPluginYaml {
                 load = PaperPluginYaml.Load.BEFORE
             }
             register("OpenInv") {
+                required = false
+                load = PaperPluginYaml.Load.BEFORE
+            }
+            register("DiscordSRV") {
                 required = false
                 load = PaperPluginYaml.Load.BEFORE
             }

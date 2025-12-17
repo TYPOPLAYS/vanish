@@ -3,6 +3,7 @@ package de.mcmdev.vanish;
 import de.mcmdev.vanish.api.ApiModule;
 import de.mcmdev.vanish.command.VanishCommand;
 import de.mcmdev.vanish.config.ConfigModule;
+import de.mcmdev.vanish.integration.DiscordSrvIntegration;
 import de.mcmdev.vanish.listeners.FakeMessageListener;
 import de.mcmdev.vanish.listeners.HookListener;
 import de.mcmdev.vanish.listeners.JoinQuitDispatcherListener;
@@ -62,6 +63,9 @@ public class VanishPlugin extends JavaPlugin {
         injector.request(VanishExpansion.class).register();
         if(Bukkit.getPluginManager().isPluginEnabled("OpenInv")) {
             injector.request(OpenInvIntegration.class).register();
+        }
+        if(Bukkit.getPluginManager().isPluginEnabled("DiscordSRV")) {
+            injector.request(DiscordSrvIntegration.class).register();
         }
 
         // Vanish command
