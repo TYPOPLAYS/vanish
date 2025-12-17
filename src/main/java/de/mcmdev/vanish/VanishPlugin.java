@@ -3,6 +3,7 @@ package de.mcmdev.vanish;
 import de.mcmdev.vanish.api.ApiModule;
 import de.mcmdev.vanish.command.VanishCommand;
 import de.mcmdev.vanish.config.ConfigModule;
+import de.mcmdev.vanish.listeners.FakeMessageListener;
 import de.mcmdev.vanish.listeners.HookListener;
 import de.mcmdev.vanish.listeners.JoinQuitDispatcherListener;
 import de.mcmdev.vanish.integration.OpenInvIntegration;
@@ -43,6 +44,7 @@ public class VanishPlugin extends JavaPlugin {
         registerListener(JoinQuitDispatcherListener.class);
         registerListener(InteractionBlockingEffectListener.class);
         registerListener(HookListener.class);
+        registerListener(FakeMessageListener.class);
 
         registerListener(BlockBreakProtectionListener.class);
         registerListener(BlockPlaceProtectionListener.class);
