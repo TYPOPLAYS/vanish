@@ -31,7 +31,7 @@ repositories {
 }
 
 dependencies {
-    paperweight.paperDevBundle("1.21.8-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.21.10-R0.1-SNAPSHOT")
     runtimeDownload("space.arim.dazzleconf:dazzleconf-core:2.0.0-M1")
     runtimeDownload("space.arim.dazzleconf:dazzleconf-yaml:2.0.0-M1")
     runtimeDownload("space.arim.injector:injector:1.1.0-RC2")
