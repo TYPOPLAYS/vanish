@@ -58,6 +58,7 @@ public class VanishPlugin extends JavaPlugin {
         registerListener(HidingEffectListener.class);
         registerListener(InteractionBlockingEffectListener.class);
         registerListener(MetadataEffectListener.class);
+        registerListener(SleepStatusEffectListener.class);
         registerListener(VanishStatusScheduler.class);
 
         // Expansions (also mostly just listeners)
