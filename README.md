@@ -25,9 +25,11 @@
   - No item pickup [/]
   - No damage [/]
   - No sculk trigger [/]
+  - Ghost mode [x]
 - Integrations
   - OpenInv SilentChest [/]
   - PAPI Expansion [/]
+- Vanish hostname [x]
 
 ## TODO
 - Properly separate protection and events
