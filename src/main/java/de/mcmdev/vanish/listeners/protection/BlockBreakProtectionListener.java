@@ -15,7 +15,7 @@ public final class BlockBreakProtectionListener extends AbstractProtectionListen
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onBlockBreak(final BlockBreakEvent event) {
-        if(shouldProtect(event.getPlayer(), "block_break")) {
+        if (shouldProtect(event.getPlayer(), "block_break")) {
             event.setCancelled(true);
         }
     }

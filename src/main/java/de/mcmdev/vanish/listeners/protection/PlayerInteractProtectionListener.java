@@ -15,7 +15,7 @@ public final class PlayerInteractProtectionListener extends AbstractProtectionLi
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onPlayerInteract(final PlayerInteractEvent event) {
-        if(shouldProtect(event.getPlayer(), "player_interact")) {
+        if (shouldProtect(event.getPlayer(), "player_interact")) {
             event.setCancelled(true);
         }
     }

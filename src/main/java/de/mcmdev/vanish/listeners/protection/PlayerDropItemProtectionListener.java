@@ -15,7 +15,7 @@ public final class PlayerDropItemProtectionListener extends AbstractProtectionLi
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onPlayerDropItem(final PlayerDropItemEvent event) {
-        if(shouldProtect(event.getPlayer(), "player_drop")) {
+        if (shouldProtect(event.getPlayer(), "player_drop")) {
             event.setCancelled(true);
         }
     }

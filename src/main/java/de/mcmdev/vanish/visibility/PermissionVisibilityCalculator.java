@@ -58,7 +58,7 @@ public final class PermissionVisibilityCalculator extends AbstractVisibilityCalc
 
         private int load(final UUID uuid) {
             final Player player = Bukkit.getPlayer(uuid);
-            if(player == null) return 0;
+            if (player == null) return 0;
 
             for (int i = maximumLevel; i > 0; i--) {
                 final String permission = permissionTemplate.formatted(i);

@@ -7,18 +7,18 @@ import org.jetbrains.annotations.NotNull;
 
 public final class VanishEnterEvent extends PlayerEvent {
 
-  private static final HandlerList handlers = new HandlerList();
+    private static final HandlerList handlers = new HandlerList();
 
-  VanishEnterEvent(@NotNull final Player player) {
-    super(player);
-  }
+    VanishEnterEvent(@NotNull final Player player) {
+        super(player);
+    }
 
-  public static HandlerList getHandlerList() {
-    return handlers;
-  }
+    public static HandlerList getHandlerList() {
+        return handlers;
+    }
 
-  @Override
-  public @NotNull HandlerList getHandlers() {
-    return handlers;
-  }
+    @Override
+    public @NotNull HandlerList getHandlers() {
+        return handlers;
+    }
 }

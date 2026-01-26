@@ -33,7 +33,7 @@ public final class VanishStatusScheduler implements Listener {
     }
 
     @EventHandler
-    private void onVanish(final VanishApplyEffectsEvent event)  {
+    private void onVanish(final VanishApplyEffectsEvent event) {
         final Player player = event.getPlayer();
         final UUID uniqueId = player.getUniqueId();
         final ScheduledTask scheduledTask = player.getScheduler().runAtFixedRate(plugin, (createdTask) -> {
@@ -43,10 +43,10 @@ public final class VanishStatusScheduler implements Listener {
     }
 
     @EventHandler
-    private void onUnvanish(final VanishClearEffectsEvent event)  {
+    private void onUnvanish(final VanishClearEffectsEvent event) {
         event.getPlayer().sendActionBar(Component.empty());
         final ScheduledTask scheduledTask = statusTask.remove(event.getPlayer().getUniqueId());
-        if(scheduledTask != null) {
+        if (scheduledTask != null) {
             scheduledTask.cancel();
         }
     }

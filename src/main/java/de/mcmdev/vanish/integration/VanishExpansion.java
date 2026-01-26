@@ -52,20 +52,20 @@ public final class VanishExpansion extends PlaceholderExpansion implements Relat
 
     @Override
     public @Nullable String onRequest(final OfflinePlayer player, @NotNull final String params) {
-        if(params.equals("vanished")) {
-            if(!player.isOnline()) {
+        if (params.equals("vanished")) {
+            if (!player.isOnline()) {
                 return api.supportsOfflinePlayers() ? api.isVanished(player.getUniqueId()) ? PlaceholderAPIPlugin.booleanTrue() : PlaceholderAPIPlugin.booleanFalse() : null;
             }
 
             return api.isVanished(player.getUniqueId()) ? PlaceholderAPIPlugin.booleanTrue() : PlaceholderAPIPlugin.booleanFalse();
         }
-        if(params.equals("count")) {
-            if(player instanceof final Player viewer) {
+        if (params.equals("count")) {
+            if (player instanceof final Player viewer) {
                 return String.valueOf(Bukkit.getOnlinePlayers().stream()
                         .filter(api::isVanished)
                         .filter(target -> api.canSee(viewer, target))
                         .count());
-            }   else {
+            } else {
                 return String.valueOf(Bukkit.getOnlinePlayers().stream()
                         .filter(api::isVanished)
                         .count());
@@ -77,28 +77,28 @@ public final class VanishExpansion extends PlaceholderExpansion implements Relat
 
     @Override
     public String onPlaceholderRequest(final Player one, final Player two, final String identifier) {
-        if(identifier.equals("vanished")) {
-            if(one == null || two == null) {
+        if (identifier.equals("vanished")) {
+            if (one == null || two == null) {
                 return null;
             }
 
-            if(!api.isVanished(two)) {
+            if (!api.isVanished(two)) {
                 return PlaceholderAPIPlugin.booleanFalse();
             }
-            if(one.equals(two)) return PlaceholderAPIPlugin.booleanTrue();
+            if (one.equals(two)) return PlaceholderAPIPlugin.booleanTrue();
             return api.canSee(one, two) ? PlaceholderAPIPlugin.booleanTrue() : PlaceholderAPIPlugin.booleanFalse();
         }
 
-        if(identifier.equals("can_see")) {
-            if(one == null || two == null) {
+        if (identifier.equals("can_see")) {
+            if (one == null || two == null) {
                 return null;
             }
 
-            if(!api.isVanished(two)) {
+            if (!api.isVanished(two)) {
                 return PlaceholderAPIPlugin.booleanTrue();
             }
-            if(one.equals(two)) return PlaceholderAPIPlugin.booleanTrue();
-            return api.canSee(one, two) ?  PlaceholderAPIPlugin.booleanTrue() : PlaceholderAPIPlugin.booleanFalse();
+            if (one.equals(two)) return PlaceholderAPIPlugin.booleanTrue();
+            return api.canSee(one, two) ? PlaceholderAPIPlugin.booleanTrue() : PlaceholderAPIPlugin.booleanFalse();
         }
 
         return null;

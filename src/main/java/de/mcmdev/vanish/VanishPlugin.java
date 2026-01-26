@@ -4,11 +4,11 @@ import de.mcmdev.vanish.api.ApiModule;
 import de.mcmdev.vanish.command.VanishCommand;
 import de.mcmdev.vanish.config.ConfigModule;
 import de.mcmdev.vanish.integration.DiscordSrvIntegration;
+import de.mcmdev.vanish.integration.OpenInvIntegration;
+import de.mcmdev.vanish.integration.VanishExpansion;
 import de.mcmdev.vanish.listeners.FakeMessageListener;
 import de.mcmdev.vanish.listeners.HookListener;
 import de.mcmdev.vanish.listeners.JoinQuitDispatcherListener;
-import de.mcmdev.vanish.integration.OpenInvIntegration;
-import de.mcmdev.vanish.integration.VanishExpansion;
 import de.mcmdev.vanish.listeners.effects.*;
 import de.mcmdev.vanish.listeners.protection.*;
 import de.mcmdev.vanish.storage.StorageModule;
@@ -63,10 +63,10 @@ public class VanishPlugin extends JavaPlugin {
 
         // Expansions (also mostly just listeners)
         injector.request(VanishExpansion.class).register();
-        if(Bukkit.getPluginManager().isPluginEnabled("OpenInv")) {
+        if (Bukkit.getPluginManager().isPluginEnabled("OpenInv")) {
             injector.request(OpenInvIntegration.class).register();
         }
-        if(Bukkit.getPluginManager().isPluginEnabled("DiscordSRV")) {
+        if (Bukkit.getPluginManager().isPluginEnabled("DiscordSRV")) {
             injector.request(DiscordSrvIntegration.class).register();
         }
 

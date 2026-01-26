@@ -25,13 +25,13 @@ public final class OpenInvIntegration implements Listener {
     }
 
     @EventHandler
-    private void onVanish(final VanishApplyEffectsEvent event)  {
+    private void onVanish(final VanishApplyEffectsEvent event) {
         openInv.setAnyContainerStatus(event.getPlayer(), true);
         openInv.setSilentContainerStatus(event.getPlayer(), true);
     }
 
     @EventHandler
-    private void onUnvanish(final VanishClearEffectsEvent event)  {
+    private void onUnvanish(final VanishClearEffectsEvent event) {
         openInv.setAnyContainerStatus(event.getPlayer(), false);
         openInv.setSilentContainerStatus(event.getPlayer(), false);
     }

@@ -67,13 +67,13 @@ public class VanishCommand {
             return 1;
         }
 
-        if(!vanishApi.supportsLevels()) {
+        if (!vanishApi.supportsLevels()) {
             player.sendRichMessage("<red>Vanish levels are not available in the current configuration.");
             return 2;
         }
 
         final boolean hasOverride = vanishApi.getLevelOverride(player.getUniqueId()) != null;
-        if(!hasOverride) {
+        if (!hasOverride) {
             config.messages().levelOverrideNotSet().send(player);
             return 3;
         }
@@ -91,7 +91,7 @@ public class VanishCommand {
 
         final Integer level = context.getArgument("level", Integer.class);
 
-        if(!vanishApi.supportsLevels()) {
+        if (!vanishApi.supportsLevels()) {
             player.sendRichMessage("<red>Vanish levels are not available in the current configuration.");
             return 2;
         }

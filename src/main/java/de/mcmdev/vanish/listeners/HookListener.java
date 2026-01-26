@@ -33,12 +33,12 @@ public final class HookListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
-    private void onPlayerInteractEntity(final PlayerInteractEntityEvent event)  {
+    private void onPlayerInteractEntity(final PlayerInteractEntityEvent event) {
         if (!api.isVanished(event.getPlayer())) {
             return;
         }
 
-        if(event.getRightClicked() instanceof final Player target) {
+        if (event.getRightClicked() instanceof final Player target) {
             config.playerClickHook().execute(event.getPlayer(), target);
         }
     }

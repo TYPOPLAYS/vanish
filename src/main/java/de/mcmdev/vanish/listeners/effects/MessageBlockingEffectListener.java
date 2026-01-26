@@ -5,7 +5,7 @@ import jakarta.inject.Inject;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.*;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 
 public final class MessageBlockingEffectListener implements Listener {
@@ -19,14 +19,14 @@ public final class MessageBlockingEffectListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onPlayerAdvancementDone(final PlayerAdvancementDoneEvent event) {
-        if(api.isVanished(event.getPlayer())) {
+        if (api.isVanished(event.getPlayer())) {
             event.message(null);
         }
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onPlayerDeath(final PlayerDeathEvent event) {
-        if(api.isVanished(event.getPlayer())) {
+        if (api.isVanished(event.getPlayer())) {
             event.deathMessage(null);
         }
     }

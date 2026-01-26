@@ -12,14 +12,14 @@ import space.arim.dazzleconf.engine.SerializeOutput;
 
 public final class Message {
 
-    public static Message of(final String messageTemplate) {
-        return new Message(messageTemplate);
-    }
-
     private final String messageTemplate;
 
     Message(final String messageTemplate) {
         this.messageTemplate = messageTemplate;
+    }
+
+    public static Message of(final String messageTemplate) {
+        return new Message(messageTemplate);
     }
 
     String messageTemplate() {

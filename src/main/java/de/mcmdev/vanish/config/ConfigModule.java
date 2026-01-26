@@ -8,10 +8,10 @@ import space.arim.dazzleconf.StandardErrorPrint;
 import space.arim.dazzleconf.backend.Backend;
 import space.arim.dazzleconf.backend.PathRoot;
 import space.arim.dazzleconf.backend.yaml.YamlBackend;
+import space.arim.dazzleconf.reflect.TypeToken;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import space.arim.dazzleconf.reflect.TypeToken;
 
 public final class ConfigModule {
 
@@ -19,9 +19,11 @@ public final class ConfigModule {
 
     public Configuration<Config> configuration() {
         return Configuration.defaultBuilder(Config.class)
-            .addSimpleSerializer(new TypeToken<>(){}, new Message.Serdes())
-            .addSimpleSerializer(new TypeToken<>(){}, new CommandHook.Serdes())
-            .build();
+                .addSimpleSerializer(new TypeToken<>() {
+                }, new Message.Serdes())
+                .addSimpleSerializer(new TypeToken<>() {
+                }, new CommandHook.Serdes())
+                .build();
     }
 
     public Backend backend(final VanishPlugin vanishPlugin) throws IOException {

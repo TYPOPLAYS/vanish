@@ -15,7 +15,7 @@ public final class BlockPlaceProtectionListener extends AbstractProtectionListen
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onBlockPlace(final BlockPlaceEvent event) {
-        if(shouldProtect(event.getPlayer(), "block_place")) {
+        if (shouldProtect(event.getPlayer(), "block_place")) {
             event.setCancelled(true);
         }
     }

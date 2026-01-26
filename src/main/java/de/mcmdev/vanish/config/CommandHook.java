@@ -17,18 +17,18 @@ import java.util.List;
 
 public final class CommandHook {
 
+    private final List<String> commandTemplates;
+
+    private CommandHook(final List<String> commandTemplates) {
+        this.commandTemplates = commandTemplates;
+    }
+
     public static CommandHook of(final String resolvedCommands) {
         return new CommandHook(List.of(resolvedCommands));
     }
 
     public static CommandHook empty() {
         return new CommandHook(Collections.emptyList());
-    }
-
-    private final List<String> commandTemplates;
-
-    private CommandHook(final List<String> commandTemplates) {
-        this.commandTemplates = commandTemplates;
     }
 
     public void execute(final Player player) {

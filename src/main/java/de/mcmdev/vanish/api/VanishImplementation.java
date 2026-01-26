@@ -112,7 +112,7 @@ final class VanishImplementation implements VanishApi {
 
         storage.setVanishLevelOverride(uuid, value);
 
-        if(player != null) {
+        if (player != null) {
             eventDispatcher.recalculate(player);
         }
     }

@@ -23,7 +23,7 @@ public final class InteractionBlockingEffectListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onPlayerInteract(final PlayerInteractEvent event) {
         if (event.getAction() == Action.PHYSICAL) {
-            if(api.isVanished(event.getPlayer())) {
+            if (api.isVanished(event.getPlayer())) {
                 event.setCancelled(true);
             }
         }
@@ -31,8 +31,8 @@ public final class InteractionBlockingEffectListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityDamage(final EntityDamageEvent event) {
-        if(event.getEntity() instanceof final Player player) {
-            if(api.isVanished(player)) {
+        if (event.getEntity() instanceof final Player player) {
+            if (api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
@@ -40,8 +40,8 @@ public final class InteractionBlockingEffectListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityDamageByEntity(final EntityDamageByEntityEvent event) {
-        if(event.getEntity() instanceof final Player player) {
-            if(api.isVanished(player)) {
+        if (event.getEntity() instanceof final Player player) {
+            if (api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
@@ -49,8 +49,8 @@ public final class InteractionBlockingEffectListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityDamageByBlock(final EntityDamageByBlockEvent event) {
-        if(event.getEntity() instanceof final Player player) {
-            if(api.isVanished(player)) {
+        if (event.getEntity() instanceof final Player player) {
+            if (api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
@@ -58,17 +58,17 @@ public final class InteractionBlockingEffectListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityTarget(final EntityTargetEvent event) {
-        if(event.getTarget() instanceof final Player player) {
-            if(api.isVanished(player)) {
+        if (event.getTarget() instanceof final Player player) {
+            if (api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
-    private void onSculkTrigger(final GenericGameEvent event)   {
-        if(event.getEntity() instanceof final Player player) {
-            if(api.isVanished(player)) {
+    private void onSculkTrigger(final GenericGameEvent event) {
+        if (event.getEntity() instanceof final Player player) {
+            if (api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
@@ -77,12 +77,11 @@ public final class InteractionBlockingEffectListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityPickupItem(final EntityPickupItemEvent event) {
         if (event.getEntity() instanceof final Player player) {
-            if(api.isVanished(player)) {
+            if (api.isVanished(player)) {
                 event.setCancelled(true);
             }
         }
     }
-
 
 
 }

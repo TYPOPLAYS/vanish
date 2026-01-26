@@ -16,8 +16,8 @@ public final class EntityDamageProtectionListener extends AbstractProtectionList
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     private void onEntityDamageByEntity(final EntityDamageByEntityEvent event) {
-        if(event.getDamager() instanceof final Player player) {
-            if(shouldProtect(player, "entity_damage")) {
+        if (event.getDamager() instanceof final Player player) {
+            if (shouldProtect(player, "entity_damage")) {
                 event.setCancelled(true);
             }
         }

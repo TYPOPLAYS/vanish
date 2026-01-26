@@ -5,8 +5,8 @@ import org.bukkit.entity.Player;
 public final class EventDispatcher {
 
     public void enter(final Player player) {
-      final VanishEnterEvent vanishEnterEvent = new VanishEnterEvent(player);
-      vanishEnterEvent.callEvent();
+        final VanishEnterEvent vanishEnterEvent = new VanishEnterEvent(player);
+        vanishEnterEvent.callEvent();
     }
 
     public void exit(final Player player) {

@@ -18,11 +18,11 @@ public final class OverrideAccountingVisibilityCalculator extends AbstractVisibi
         final Integer vanishLevelOverride = storage.getVanishLevelOverride(player.getUniqueId());
 
         final int delegateUseLevel = delegate.getUseLevel(player);
-        if(vanishLevelOverride == null) {
+        if (vanishLevelOverride == null) {
             return delegateUseLevel;
         }
 
-        if(delegateUseLevel < vanishLevelOverride) {
+        if (delegateUseLevel < vanishLevelOverride) {
             return delegateUseLevel;
         }
 
