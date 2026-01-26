@@ -90,8 +90,6 @@ runPaper {
 }
 
 tasks.getByName("runFolia", RunServer::class) {
-    jvmArgs("-XX:+AllowEnhancedClassRedefinition")
-
     downloadPlugins {
         url("https://ci.lucko.me/job/LuckPerms-Folia/9/artifact/bukkit/loader/build/libs/LuckPerms-Bukkit-5.5.11.jar")
         url("https://github.com/Jikoo/OpenInv/releases/download/5.1.15/OpenInv.jar")
