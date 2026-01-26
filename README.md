@@ -1,5 +1,7 @@
 # Vanish
 
+A well-made vanish plugin for modern Paper servers.
+
 ## Requirements
 - Vanish command
   - Toggle own vanish [/]
@@ -30,6 +32,3 @@
   - OpenInv SilentChest [/]
   - PAPI Expansion [/]
 - Vanish hostname [x]
-
-## TODO
-- Properly separate protection and events
