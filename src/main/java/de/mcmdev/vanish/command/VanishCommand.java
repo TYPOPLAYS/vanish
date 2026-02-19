@@ -24,6 +24,7 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import de.mcmdev.vanish.VanishPlugin;
 import de.mcmdev.vanish.api.VanishApi;
 import de.mcmdev.vanish.config.Config;
+import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
@@ -52,6 +53,10 @@ public class VanishCommand {
         return Commands.literal("vanish")
                 .requires(commandSourceStack -> commandSourceStack.getSender().hasPermission("vanish.command"))
                 .executes(this::run)
+                .then(
+                        Commands.argument("target", ArgumentTypes.player())
+                                .executes(this::run)
+                )
                 .then(
                         Commands.literal("setlevel")
                                 .requires(commandSourceStack -> commandSourceStack.getSender().hasPermission("vanish.command.setlevel"))
